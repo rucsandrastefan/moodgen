@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 class SpotifyService {
   static const _baseUrl = 'https://api.spotify.com/v1';
 
-  /// Fetches the Spotify profile of the logged-in user
   Future<Map<String, dynamic>> fetchProfile(String accessToken) async {
     final response = await http.get(
       Uri.parse('$_baseUrl/me'),

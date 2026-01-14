@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/home/widgets/home_screen.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/login_viewmodel.dart';
 
@@ -10,31 +11,14 @@ class LoginScreen extends StatelessWidget {
     final vm = context.watch<LoginViewmodel>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+ 
       body: Center(
         child: vm.isLoading
             ? const CircularProgressIndicator()
             : vm.currentUser != null
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (vm.currentUser!.avatarUrl != null)
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: NetworkImage(
-                            vm.currentUser!.avatarUrl!,
-                          ),
-                        ),
-                      const SizedBox(height: 12),
-                      Text(
-                        vm.currentUser!.displayName,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                      if (vm.currentUser!.email != null)
-                        Text(vm.currentUser!.email!),
-                        ElevatedButton(onPressed: vm.logout, child: Text("Logout button"),),
-                    ],
-                  )
+                ? HomeScreen()
+                    
+                  
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -47,10 +31,30 @@ class LoginScreen extends StatelessWidget {
                                 const TextStyle(color: Colors.red),
                           ),
                         ),
-                      ElevatedButton(
+                      FilledButton.icon(
                         onPressed: vm.loginWithSpotify,
-                        child:
-                            const Text("Login with Spotify"),
+                        icon: Icon(Icons.music_note),
+                        label: Text("Login with Spotify"),
+                        style: FilledButton.styleFrom(
+                          backgroundColor:  Colors.redAccent.shade400,
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(horizontal: 24,
+                          vertical: 14),
+                          shape : RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        
+                          textStyle: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 0.5, 
+                          ),
+                          
+                          ),
+                          
+        
+                        
+                       
                       ),
                       
                     ],
