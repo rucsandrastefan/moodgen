@@ -2,18 +2,8 @@
 // ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -39,7 +29,7 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
+  
   static  FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyA9jgCbV9y5PFZTBl60S6uaq3T_gLc9Npc',
     appId: '1:777700416476:web:89eecb1c9bc256e0ea4d19',
